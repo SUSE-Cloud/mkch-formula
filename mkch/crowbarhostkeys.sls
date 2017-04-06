@@ -1,15 +1,18 @@
+{% set homedir = salt['pillar.get']('jenkins:homedir') %}
+{% set user = salt['pillar.get']('jenkins:systemuser') %}
+
 root_ssh_dir_exists:
   file.directory:
-    - name: /root/.ssh
-    - user: root
+    - name: {{homedir}}/.ssh
+    - user: {{user}}
     - group: root
     - mode: 700
 
 ignore-crowbar-host-keys:
   file.append:
-    - name: /root/.ssh/config
+    - name: {{homedir}}/.ssh/config
     - require:
-      - /root/.ssh
+      - root_ssh_dir_exists
     - text: |
         Host crowbar* 192.168.*.10
           NumberOfPasswordPrompts 1

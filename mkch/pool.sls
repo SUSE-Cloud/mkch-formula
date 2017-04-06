@@ -1,12 +1,18 @@
-/root/pool:
-  file.directory
-
-/root/pool/1:
+{% set homedir = salt['pillar.get']('jenkins:homedir') %}
+{% set user = salt['pillar.get']('jenkins:systemuser') %}
+allocationpool:
   file.directory:
-    - require:
-      - /root/pool
+    - name: {{homedir}}/pool
+    - user: {{user}}
 
-/root/pool/2:
+{{homedir}}/pool/1:
   file.directory:
+    - user: {{user}}
     - require:
-      - /root/pool
+      - allocationpool
+
+{{homedir}}/pool/2:
+  file.directory:
+    - user: {{user}}
+    - require:
+      - allocationpool
