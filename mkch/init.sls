@@ -1,6 +1,6 @@
 include:
   - mkch.crowbarhostkeys
-  - mkch.gitconfig
+  #- mkch.gitconfig
   - mkch.lvm
   - mkch.pkg
   - mkch.pool
