@@ -1,4 +1,5 @@
 include:
+  - mkch.cron
   - mkch.crowbarhostkeys
   #- mkch.gitconfig
   - mkch.lvm
