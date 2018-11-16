@@ -10,9 +10,3 @@ allocationpool:
     - user: {{user}}
     - require:
       - allocationpool
-
-{{homedir}}/pool/2:
-  file.directory:
-    - user: {{user}}
-    - require:
-      - allocationpool
